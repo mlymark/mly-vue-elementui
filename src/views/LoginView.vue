@@ -70,7 +70,13 @@ export default {
         this.$store.commit('updateLoginData', res.data)
         localStorage.setItem('userName', res.data.userName)
         localStorage.setItem('token', res.data.token)
-        this.$router.push({name: 'home'})
+        let redirect = this.$route.query.redirect
+        if (redirect) {
+          console.log('跳转到上一个 请求鉴权页面')
+          this.$router.push({path: redirect})
+        } else {
+          this.$router.push({name: 'dashboard'})
+        }
       } else {
         //  this.error = res.msg
         this.loginState = '登录'

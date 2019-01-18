@@ -5,7 +5,8 @@ const state = {
   login_token: '',
   login_time: '',
   temp_password: '',
-  temp_name: ''
+  temp_name: '',
+  avatar: '../assets/image/avatar.png'
 }
 
 const getters = {
@@ -23,6 +24,9 @@ const mutations = {
     console.log(payload)
     state.login_name = payload.userName
     state.login_token = payload.token
+    if (payload.avatar) {
+      state.avatar = payload.avatar
+    }
     state.login_time = new Date()
   },
   logout (state) {

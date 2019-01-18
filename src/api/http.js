@@ -3,7 +3,7 @@
  */
 import axios from 'axios'
 // import QS from 'qs'
-import router from '../router'
+import { router } from '../router'
 import store from '../store'
 
 // 环境的切换
