@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { toLogin } from '../api/api'
+import { toLogin } from '../api/user'
 
 export default {
   name: 'login',
@@ -134,7 +134,8 @@ export default {
     height: 40px;
     margin-top: 10px;
     border-bottom: 1px solid #ebeef5;
-
+    text-align: center;
+    font-size: 20px;
   }
 
   .login-form .el-form-item {

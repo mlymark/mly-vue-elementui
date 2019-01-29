@@ -59,6 +59,7 @@ export default {
   .menu-bar {
     .collapse-control {
       height: 60px;
+      border-right: 1px solid #40aaff;
       .logo {
         display: inline-block;
         width: 65px;

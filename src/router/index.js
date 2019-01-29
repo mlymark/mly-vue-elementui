@@ -8,6 +8,7 @@ import AdminView from '../views/AdminView'
 import DashboardView from '../views/DashboardView'
 import CompanyView from '../views/CompanyView'
 import CompanyDetailView from '../views/CompanyDetailView'
+import AddCompanyView from '../views/AddCompanyView'
 
 Vue.use(Router)
 
@@ -37,6 +38,12 @@ export const router = new Router({
           path: 'company',
           name: 'company',
           component: CompanyView,
+          meta: {requiresAuth: true}
+        },
+        {
+          path: 'addCompany',
+          name: 'addCompany',
+          component: AddCompanyView,
           meta: {requiresAuth: true}
         },
         {

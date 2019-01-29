@@ -10,7 +10,19 @@
       <span class="username">
         {{userName}}
       </span>
-      <i class="fa fa-cog" aria-hidden="true"></i>
+      <div>
+        <i class="fa" :class="{'el-icon-caret-bottom':isDropDown,'el-icon-caret-right':!isDropDown}" aria-hidden="true"
+           @click="switchDropDown"></i>
+      </div>
+      <transition name="fade">
+        <div v-show="isDropDown" class="drop-down" @mouseleave="switchDropDown">
+          <ul>
+            <router-link tag="li" :to="{ path: 'home' }">用户信息</router-link>
+            <router-link tag="li" :to="{ path: 'home' }">修改密码</router-link>
+            <li @click="logout">退出账号</li>
+          </ul>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -25,13 +37,24 @@ export default {
       userName: localStorage.getItem('userName'),
       avatar: '',
       baseAvatar: 'http://www.jf258.com/uploads/2014-09-09/120105693.jpg',
-      isCollapse: false
+      isCollapse: false,
+      isDropDown: false
     }
   },
   methods: {
     handleCollapse () {
       this.isCollapse = !this.isCollapse
       this.$emit('switch', this.isCollapse)
+    },
+    switchDropDown () {
+      this.isDropDown = !this.isDropDown
+    },
+    logout () {
+      localStorage.setItem('userName', '')
+      localStorage.setItem('token', '')
+      this.$router.push({
+        name: 'login'
+      })
     }
   }
 }
@@ -43,7 +66,7 @@ export default {
     flex-direction: row;
     .slide-control {
       line-height: 60px;
-      font-size: 30px;
+      font-size: 25px;
       color: #fff;
       cursor: Pointer;
     }
@@ -92,6 +115,33 @@ export default {
         margin: 0 10px;
         line-height: 60px;
         color: #333;
+      }
+      .drop-down {
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background-color: #fafafa;
+        box-shadow: 0px 0px 6px 1px #9e9a9a;
+        margin-top: 5px;
+        z-index: 1000;
+        ul {
+          list-style: none;
+          padding: 0px;
+          width: 120px;
+          li {
+            border-bottom: 1px solid #efe5e5;
+            width: 90px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            padding: 10px;
+            font-size: 15px;
+            cursor: pointer;
+          }
+          li:hover {
+            background-color: aliceblue;
+          }
+        }
       }
     }
 

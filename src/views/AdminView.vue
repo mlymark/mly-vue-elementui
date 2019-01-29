@@ -7,7 +7,6 @@
       <el-header>
         <header-bar @switch="handleSideSwitch"></header-bar>
       </el-header>
-      <breadcrumb-bar></breadcrumb-bar>
       <el-main>
         <router-view></router-view>
       </el-main>
@@ -18,7 +17,6 @@
 <script>
 import HeaderBar from '../components/HeaderBar'
 import MenuBar from '../components/MenuBar'
-import BreadcrumbBar from '../components/BreadcrumbBar'
 
 export default {
   name: 'admin',
@@ -28,7 +26,7 @@ export default {
       isCollapse: false
     }
   },
-  components: {HeaderBar, MenuBar, BreadcrumbBar},
+  components: {HeaderBar, MenuBar},
   methods: {
     handleSideSwitch (val) {
       this.isCollapse = val

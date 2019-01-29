@@ -1,7 +1,7 @@
 /**
  * api接口统一管理
  */
-import { get, post } from './http'
+import { get, post, put } from './http'
 
 /**
  * 登录请求
@@ -11,4 +11,4 @@ export const toLogin = p => post('/auth/login', p)
 
 export const getUser = p => get('/users', p)
 
-export const apiAddress = p => post('api/v1/users/my_address/address_edit_before', p)
+export const addUser = p => put('/users/register', p)
